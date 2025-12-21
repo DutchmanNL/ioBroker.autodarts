@@ -47,6 +47,9 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- Update Description
+
 ### 0.0.4 (2025-12-21)
 - Privacy & Data Handling
 
