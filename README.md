@@ -54,6 +54,9 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- Privacy & Data Handling
+  
 ### 0.0.3 (2025-12-21)
 - init
 
