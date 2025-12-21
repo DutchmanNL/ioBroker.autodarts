@@ -26,8 +26,7 @@ Autodarts Autoscoring to ioBroker
 <!--
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.3 (2025-12-21)
 - init
 
 ### 0.0.2 (2025-12-21)
