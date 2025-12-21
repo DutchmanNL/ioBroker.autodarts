@@ -1,10 +1,7 @@
 {
-    "autodarts adapter settings": "Adapterinstellingen voor autodarts",
     "host_ip": "Autodarts (Boardmanager) Host / IP",
     "host_port": "Autodarts (Bestuursmanager) Port",
     "intro_txt": "Autodarts-adapterconfiguratie.<br>Voer de host en poort van Boardmanager in, evenals het polling-interval.",
-    "option1": "optie1",
-    "option2": "optie2",
     "outro_txt": "Team inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
     "polling": "Polling-interval (ms)"
 }

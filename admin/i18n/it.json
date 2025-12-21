@@ -1,10 +1,7 @@
 {
-    "autodarts adapter settings": "Impostazioni dell'adattatore per autodarts",
     "host_ip": "Host/IP Autodarts (Boardmanager).",
     "host_port": "Porta Autodarts (Boardmanager).",
     "intro_txt": "Configurazione dell'adattatore Autodarts.<br>Inserisci host e porta da Boardmanager nonché l'intervallo di polling.",
-    "option1": "opzione1",
-    "option2": "opzione2",
     "outro_txt": "Team inventtwo • <a href=\"https://github.com/inventtwo\">https://github.com/inventtwo</a>",
     "polling": "Intervallo di polling (ms)"
 }

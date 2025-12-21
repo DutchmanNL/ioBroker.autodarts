@@ -1,10 +1,7 @@
 {
-    "autodarts adapter settings": "Ajustes del adaptador para autodarts",
     "host_ip": "Autodarts (Boardmanager) Host/IP",
     "host_port": "Puerto Autodarts (Boardmanager)",
     "intro_txt": "Configuración del adaptador Autodarts.<br>Ingrese el host y el puerto de Boardmanager, así como el intervalo de sondeo.",
-    "option1": "opción1",
-    "option2": "opción2",
     "outro_txt": "Equipo inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
     "polling": "Intervalo de sondeo (ms)"
 }
