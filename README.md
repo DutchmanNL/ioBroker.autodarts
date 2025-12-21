@@ -22,33 +22,26 @@
 ## What this adapter does NOT do
 
 - ❌ No data is sent to the internet or to third-party servers.
-- ❌ No throw history, statistics, or personal data is stored or shared.
+- ❌ No history, statistics, or personal data is stored or shared.
 - ❌ No access to other people’s boards or remote boards over the internet.
 - ❌ No cloud features or analytics.
 
 All data stays local on your ioBroker system.
 
-### Configuration
+## Configuration
 
 In the adapter settings, enter:
 
 - **Board Manager IP**: IP address of your Autodarts Board Manager (e.g. `192.168.178.50`).
 - **Port**: Usually `3180` (default for Board Manager).
-- **Board ID**: Your Autodarts board ID (from Autodarts app/website).
-- **API Key**: Your Autodarts API key (from Autodarts app/website).
-- **Use HTTPS** (optional): Enable if your Board Manager supports HTTPS.
+- **Polling interval (ms)**: (default for 2000ms)
 
-⚠️ The Board ID and API key are stored locally in ioBroker and are never sent to external servers.
-
-### Privacy & Data Handling
+## Privacy & Data Handling
 
 - This adapter only reads data from your **local** Autodarts Board Manager in your own network.
 - No personal data is sent to external servers or stored in the cloud.
-- Your Board ID and API key are stored only locally in ioBroker and are never transmitted to third parties.
 - All data stays on your own system; no statistics or throw history are collected or shared.
 - This adapter is designed to work only with your own dartboard, not with remote or other people’s boards.
-
-
 
 ## Changelog
 <!--
