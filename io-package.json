@@ -80,19 +80,6 @@
         "pl": "Aktualizacja opisu",
         "uk": "Опис оновлення",
         "zh-cn": "更新描述"
-      },
-      "0.0.4": {
-        "en": "Privacy & Data Handling",
-        "de": "Datenschutz und Datenverarbeitung",
-        "ru": "Конфиденциальность и обработка данных",
-        "pt": "Gestão de Privacidade e Dados",
-        "nl": "Privacy en gegevensverwerking",
-        "fr": "Confidentialité et traitement des données",
-        "it": "Privacy e gestione dei dati",
-        "es": "Privacidad \" Gestión de datos",
-        "pl": "Obsługa prywatności i danych",
-        "uk": "Конфіденційність та обробка даних",
-        "zh-cn": "隐私和数据处理"
       }
     },
     "titleLang": {

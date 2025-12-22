@@ -9,7 +9,7 @@
 		"scoring"
 	],
 	"contributors": [
-		"jkvarel"
+		"skvarel"
 	],
 	"expert": "no",
 	"features": [
@@ -23,7 +23,7 @@
 	"connectionIndicator": "no",
 	"language": "JavaScript",
 	"nodeVersion": "20",
-	"adminUi": "react",
+	"adminUi": "json",
 	"tools": [
 		"ESLint",
 		"type checking"
