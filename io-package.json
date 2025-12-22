@@ -164,7 +164,7 @@
   "native": {
     "host": "127.0.0.1",
     "port": 3180,
-    "interval": 2000
+    "interval": 1000
   },
   "objects": [],
   "instanceObjects": []

@@ -25,7 +25,7 @@ class Autodarts extends utils.Adapter {
 		// Defaults aus io-package.json absichern
 		this.config.host ??= "127.0.0.1";
 		this.config.port ??= 3180;
-		this.config.interval ??= 2000;
+		this.config.interval ??= 1000;
 
 		// Visit-Struktur anlegen
 		await this.setObjectNotExistsAsync("visit", {

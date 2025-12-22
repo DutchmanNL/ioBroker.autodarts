@@ -1,7 +1,0 @@
-{
-    "intro_txt": "Autodarts adapter configuration.<br>Please enter host and port from Boardmanager as well as the polling interval.",
-    "outro_txt": "Team inventwo •  <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "host_ip": "Autodarts (Boardmanager) Host / IP",
-    "host_port": "Autodarts (Boardmanager) Port",
-    "polling": "Polling interval (ms)"
-}
