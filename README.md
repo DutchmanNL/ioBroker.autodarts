@@ -47,7 +47,7 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
-### 0.0.10 (2025-12-22)
+### **WORK IN PROGRESS**
 - fix
 
 ### 0.0.9 (2025-12-22)
