@@ -5,7 +5,7 @@
     "host_port": "Autodarts (Boardmanager) Port",
     "polling": "Polling interval (ms)",
     "visit_score": "Visit score (Total of 3 darts)",
-    "visit_score_dec": "Total of the last complete visit",
+    "visit_score_desc": "Total of the last complete visit",
     "board_online": "Autodarts Board online",
     "board_online_desc": "true = Board reachable, false = not reachable",
     "software_version": "Board manager version",

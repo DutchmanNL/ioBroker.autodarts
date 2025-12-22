@@ -9,5 +9,5 @@
     "software_version": "Versão do gerente do conselho",
     "software_version_desc": "Versão do gerenciador do conselho",
     "visit_score": "Pontuação da visita (Total de 3 dardos)",
-    "visit_score_dec": "Total da última visita completa"
+    "visit_score_desc": "Total da última visita completa"
 }

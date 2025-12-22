@@ -47,6 +47,9 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- translate
+
 ### 0.0.12 (2025-12-22)
 - fix
 

@@ -9,5 +9,5 @@
     "software_version": "Version du gestionnaire de forum",
     "software_version_desc": "Version du gestionnaire du conseil d'administration",
     "visit_score": "Score de visite (Total de 3 fléchettes)",
-    "visit_score_dec": "Total de la dernière visite complète"
+    "visit_score_desc": "Total de la dernière visite complète"
 }

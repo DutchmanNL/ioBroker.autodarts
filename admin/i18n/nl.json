@@ -9,5 +9,5 @@
     "software_version": "Bestuursmanager versie",
     "software_version_desc": "Versie van de bestuursmanager",
     "visit_score": "Bezoekscore (totaal 3 darts)",
-    "visit_score_dec": "Totaal van het laatste volledige bezoek"
+    "visit_score_desc": "Totaal van het laatste volledige bezoek"
 }

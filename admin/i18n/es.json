@@ -9,5 +9,5 @@
     "software_version": "Versión del administrador de la junta",
     "software_version_desc": "Versión del administrador de la junta",
     "visit_score": "Puntuación de visita (Total de 3 dardos)",
-    "visit_score_dec": "Total de la última visita completa"
+    "visit_score_desc": "Total de la última visita completa"
 }

@@ -9,5 +9,5 @@
     "software_version": "Wersja menadżera zarządu",
     "software_version_desc": "Wersja menadżera zarządu",
     "visit_score": "Wynik wizyty (łącznie 3 rzutki)",
-    "visit_score_dec": "Suma ostatniej pełnej wizyty"
+    "visit_score_desc": "Suma ostatniej pełnej wizyty"
 }

@@ -9,5 +9,5 @@
     "software_version": "Versione del direttore del consiglio",
     "software_version_desc": "Versione del consiglio di amministrazione",
     "visit_score": "Punteggio della visita (totale di 3 freccette)",
-    "visit_score_dec": "Totale dell'ultima visita completa"
+    "visit_score_desc": "Totale dell'ultima visita completa"
 }
