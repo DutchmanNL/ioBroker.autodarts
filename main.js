@@ -17,7 +17,7 @@ class Autodarts extends utils.Adapter {
 		this.lastThrowsCount = 0; // Anzahl Darts im aktuellen Visit
 		this.lastSignature = ""; // Verhindert doppelte Verarbeitung gleicher Würfe
 		this.offline = false;
-		this.versionTimer = null; // Timer für Versionsabfrage
+		this.versionTimer = null; // Timer für Versions- und Config-Abfrage
 	}
 
 	async onReady() {
@@ -27,6 +27,9 @@ class Autodarts extends utils.Adapter {
 		this.config.host ??= "127.0.0.1";
 		this.config.port ??= 3180;
 		this.config.interval ??= 1000;
+		// eslint-disable-next-line jsdoc/check-tag-names
+		/** @ts-expect-error tripleMinScore is defined in io-package.json but not in AdapterConfig */
+		this.config.tripleMinScore ??= 1; // Mindestpunktzahl für Triple-Flag
 
 		// Visit-Struktur anlegen
 		await this.setObjectNotExistsAsync("visit", {
@@ -54,6 +57,56 @@ class Autodarts extends utils.Adapter {
 				desc: {
 					en: "Total of the last complete visit",
 					de: "Summe der letzten vollständigen Aufnahme",
+				},
+			},
+			native: {},
+		});
+
+		// Throw-Channel und States
+		await this.setObjectNotExistsAsync("throw", {
+			type: "channel",
+			common: {
+				name: {
+					en: "Current throw",
+					de: "Aktueller Wurf",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("throw.current", {
+			type: "state",
+			common: {
+				name: {
+					en: "Current dart score",
+					de: "Punkte aktueller Pfeil",
+				},
+				type: "number",
+				role: "value",
+				read: true,
+				write: false,
+				desc: {
+					en: "Score of the last dart",
+					de: "Punktzahl des letzten Pfeils",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("throw.isTriple", {
+			type: "state",
+			common: {
+				name: {
+					en: "Triple hit",
+					de: "Triple getroffen",
+				},
+				type: "boolean",
+				role: "indicator",
+				read: true,
+				write: false,
+				desc: {
+					en: "true if the last dart hit a triple segment (and passes score threshold)",
+					de: "true, wenn der letzte Pfeil ein Triple-Segment getroffen hat (und die Punktschwelle erfüllt)",
 				},
 			},
 			native: {},
@@ -110,6 +163,64 @@ class Autodarts extends utils.Adapter {
 			native: {},
 		});
 
+		// Kamera-Infos als JSON-States
+		await this.setObjectNotExistsAsync("system.cam0", {
+			type: "state",
+			common: {
+				name: {
+					en: "Camera 0 config",
+					de: "Kamera 0 Konfiguration",
+				},
+				type: "string",
+				role: "json",
+				read: true,
+				write: false,
+				desc: {
+					en: "JSON with camera 0 parameters (width, height, fps)",
+					de: "JSON mit Kamera-0-Parametern (width, height, fps)",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("system.cam1", {
+			type: "state",
+			common: {
+				name: {
+					en: "Camera 1 config",
+					de: "Kamera 1 Konfiguration",
+				},
+				type: "string",
+				role: "json",
+				read: true,
+				write: false,
+				desc: {
+					en: "JSON with camera 1 parameters (width, height, fps)",
+					de: "JSON mit Kamera-1-Parametern (width, height, fps)",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("system.cam2", {
+			type: "state",
+			common: {
+				name: {
+					en: "Camera 2 config",
+					de: "Kamera 2 Konfiguration",
+				},
+				type: "string",
+				role: "json",
+				read: true,
+				write: false,
+				desc: {
+					en: "JSON with camera 2 parameters (width, height, fps)",
+					de: "JSON mit Kamera-2-Parametern (width, height, fps)",
+				},
+			},
+			native: {},
+		});
+
 		// Zustand zurücksetzen
 		this.lastThrowsCount = 0;
 		this.lastSignature = "";
@@ -118,9 +229,16 @@ class Autodarts extends utils.Adapter {
 		this.pollTimer = setInterval(() => this.fetchState(), this.config.interval);
 		this.fetchState();
 
-		// Boardmanager-Version abfragen und alle 5 Minuten aktualisieren
+		// Boardmanager-Version und Kameras abfragen und alle 5 Minuten aktualisieren
 		this.fetchVersion();
-		this.versionTimer = setInterval(() => this.fetchVersion(), 5 * 60 * 1000);
+		this.fetchConfig();
+		this.versionTimer = setInterval(
+			() => {
+				this.fetchVersion();
+				this.fetchConfig();
+			},
+			5 * 60 * 1000,
+		);
 	}
 
 	/**
@@ -179,6 +297,21 @@ class Autodarts extends utils.Adapter {
 						return;
 					}
 					this.lastSignature = signature;
+
+					// letzten Dart in States schreiben
+					const lastDart = currentThrows[currentThrows.length - 1];
+					const score = this.calcScore(lastDart);
+
+					// Konfigurierter Mindestwert für Triple-Flag
+					// eslint-disable-next-line jsdoc/check-tag-names
+					/** @ts-expect-error tripleMinScore is defined in io-package.json but not in AdapterConfig */
+					const minScore = Number(this.config.tripleMinScore) || 0;
+
+					// Triple nur, wenn multiplier === 3 UND score >= minScore
+					const isTriple = !!lastDart?.segment && lastDart.segment.multiplier === 3 && score >= minScore;
+
+					this.setState("throw.current", { val: score, ack: true });
+					this.setState("throw.isTriple", { val: isTriple, ack: true });
 
 					// Nur schreiben, wenn:
 					// - genau 3 Darts geworfen wurden
@@ -255,6 +388,55 @@ class Autodarts extends utils.Adapter {
 		req.end();
 	}
 
+	/**
+	 * Board-Konfiguration abfragen (Kameras)
+	 */
+	fetchConfig() {
+		const options = {
+			host: this.config.host,
+			port: this.config.port,
+			path: "/api/config",
+			method: "GET",
+			timeout: 1500,
+		};
+
+		const req = http.request(options, res => {
+			let data = "";
+			res.on("data", chunk => (data += chunk));
+			res.on("end", () => {
+				try {
+					const cfg = JSON.parse(data);
+
+					const cam = cfg.cam || {};
+					const camInfo = {
+						width: cam.width ?? 1280,
+						height: cam.height ?? 720,
+						fps: cam.fps ?? 20,
+					};
+
+					const json = JSON.stringify(camInfo);
+
+					this.setState("system.cam0", { val: json, ack: true });
+					this.setState("system.cam1", { val: json, ack: true });
+					this.setState("system.cam2", { val: json, ack: true });
+				} catch (e) {
+					this.log.warn(`Fehler beim Lesen der Config: ${e.message} | Daten: ${data.substring(0, 200)}...`);
+				}
+			});
+		});
+
+		req.on("error", () => {
+			this.log.warn("Config-API nicht erreichbar");
+		});
+
+		req.on("timeout", () => {
+			req.destroy();
+			this.log.warn("Config-API Timeout");
+		});
+
+		req.end();
+	}
+
 	onUnload(callback) {
 		try {
 			if (this.pollTimer) {
@@ -264,8 +446,7 @@ class Autodarts extends utils.Adapter {
 				clearInterval(this.versionTimer);
 			}
 			callback();
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (e) {
+		} catch {
 			callback();
 		}
 	}

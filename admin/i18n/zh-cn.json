@@ -3,5 +3,6 @@
     "host_port": "Autodarts（Boardmanager）端口",
     "intro_txt": "Autodarts 适配器配置。<br>请输入 Boardmanager 中的主机和端口以及轮询间隔。",
     "outro_txt": "团队 inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "polling": "轮询间隔（毫秒）"
+    "polling": "轮询间隔（毫秒）",
+    "triple_flag": "三旗最低分数"
 }

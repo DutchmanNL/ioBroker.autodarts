@@ -19,6 +19,14 @@
   - Announce the current player via TTS.
   - Trigger other automations in ioBroker.
 
+It also provides:
+
+- `visit.score`: Total score of the last complete visit (3 darts).
+- `throw.current`: Numeric score of the last thrown dart.
+- `throw.isTriple`: Boolean flag that only turns true for triple hits above a configurable score threshold.
+- `system.boardVersion`: Reported Board Manager version.
+- `system.cam0/1/2`: JSON with camera settings (width, height, fps).
+
 ## What this adapter does NOT do
 
 - ❌ No data is sent to the internet or to third-party servers.
@@ -47,6 +55,11 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- Added datapoints for visit score, current dart score, triple-hit flag with configurable minimum score, and camera configuration (cam0–cam2).
+- Cleaned up adapter logic and internal polling/timing.
+- Updated translations.
+ 
 ### 0.0.14 (2025-12-22)
 - fix
 

@@ -3,5 +3,6 @@
     "host_port": "Port Autodarts (Boardmanager)",
     "intro_txt": "Configuration de l'adaptateur Autodarts.<br>Veuillez saisir l'hôte et le port de Boardmanager ainsi que l'intervalle d'interrogation.",
     "outro_txt": "Équipe inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "polling": "Intervalle d'interrogation (ms)"
+    "polling": "Intervalle d'interrogation (ms)",
+    "triple_flag": "Score minimum pour le triple drapeau"
 }

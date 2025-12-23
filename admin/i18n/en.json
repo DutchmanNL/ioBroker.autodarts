@@ -3,5 +3,6 @@
     "outro_txt": "Team inventwo •  <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
     "host_ip": "Autodarts (Boardmanager) Host / IP",
     "host_port": "Autodarts (Boardmanager) Port",
-    "polling": "Polling interval (ms)"
+    "polling": "Polling interval (ms)",
+    "triple_flag": "Minimum score for Triple Flag"
 }

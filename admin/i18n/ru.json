@@ -3,5 +3,6 @@
     "host_port": "Порт Autodarts (Boardmanager)",
     "intro_txt": "Конфигурация адаптера Autodarts.<br>Укажите хост и порт из Boardmanager, а также интервал опроса.",
     "outro_txt": "Команда inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "polling": "Интервал опроса (мс)"
+    "polling": "Интервал опроса (мс)",
+    "triple_flag": "Минимальный балл для тройного флага"
 }

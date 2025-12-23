@@ -3,5 +3,6 @@
     "host_port": "Porta Autodarts (Boardmanager).",
     "intro_txt": "Configurazione dell'adattatore Autodarts.<br>Inserisci host e porta da Boardmanager nonché l'intervallo di polling.",
     "outro_txt": "Team inventtwo • <a href=\"https://github.com/inventtwo\">https://github.com/inventtwo</a>",
-    "polling": "Intervallo di polling (ms)"
+    "polling": "Intervallo di polling (ms)",
+    "triple_flag": "Punteggio minimo per Triple Flag"
 }

@@ -3,5 +3,6 @@
     "host_port": "Porto Autodarts (Boardmanager)",
     "intro_txt": "Configuração do adaptador Autodarts.<br>Insira o host e a porta do Boardmanager, bem como o intervalo de pesquisa.",
     "outro_txt": "Equipe inventtwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "polling": "Intervalo de pesquisa (ms)"
+    "polling": "Intervalo de pesquisa (ms)",
+    "triple_flag": "Pontuação mínima para Tripla Bandeira"
 }

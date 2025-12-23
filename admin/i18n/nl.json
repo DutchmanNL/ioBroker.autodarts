@@ -3,5 +3,6 @@
     "host_port": "Autodarts (Bestuursmanager) Port",
     "intro_txt": "Autodarts-adapterconfiguratie.<br>Voer de host en poort van Boardmanager in, evenals het polling-interval.",
     "outro_txt": "Team inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "polling": "Polling-interval (ms)"
+    "polling": "Polling-interval (ms)",
+    "triple_flag": "Minimumscore voor Triple Flag"
 }
