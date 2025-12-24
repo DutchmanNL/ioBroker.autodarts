@@ -1,8 +1,13 @@
 {
-    "host_ip": "Hôte / IP Autodarts (Boardmanager)",
+    "host_ip": "Autodarts (Boardmanager) Hôte/IP",
+    "host_ip_help": "Adresse IP de l'Autodarts Boardmanager local.",
     "host_port": "Port Autodarts (Boardmanager)",
-    "intro_txt": "Configuration de l'adaptateur Autodarts.<br>Veuillez saisir l'hôte et le port de Boardmanager ainsi que l'intervalle d'interrogation.",
-    "outro_txt": "Équipe inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
+    "host_port_help": "Numéro de port du Boardmanager Autodarts local.",
+    "intro_txt": "Configuration de l'adaptateur Autodarts.",
     "polling": "Intervalle d'interrogation (ms)",
-    "triple_flag": "Score minimum pour le triple drapeau"
+    "polling_help": "Intervalle d'interrogation en millisecondes pour récupérer les données d'Autodarts Boardmanager.",
+    "triple_flag": "Champ minimum pour le triple déclencheur",
+    "triple_flag2": "Champ maximum pour le triple déclencheur",
+    "triple_flag2_help": "Champ de score maximum pour le triple déclencheur. Les fléchettes avec un score supérieur à cette valeur ne déclencheront pas le point de données Triple-Trigger.",
+    "triple_flag_help": "Champ de score minimum pour le triple déclencheur. Les fléchettes avec un score inférieur à cette valeur ne déclencheront pas le point de données Triple-Trigger."
 }

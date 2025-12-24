@@ -1,8 +1,13 @@
 {
-    "host_ip": "Autodarts (Boardmanager) Host/IP",
+    "host_ip": "Host/IP de Autodarts (Boardmanager)",
+    "host_ip_help": "Dirección IP del administrador local de Autodarts Board.",
     "host_port": "Puerto Autodarts (Boardmanager)",
-    "intro_txt": "Configuración del adaptador Autodarts.<br>Ingrese el host y el puerto de Boardmanager, así como el intervalo de sondeo.",
-    "outro_txt": "Equipo inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
+    "host_port_help": "Número de puerto del administrador local de Autodarts Boardmanager.",
+    "intro_txt": "Configuración del adaptador Autodarts.",
     "polling": "Intervalo de sondeo (ms)",
-    "triple_flag": "Puntuación mínima para Triple Bandera"
+    "polling_help": "Intervalo de sondeo en milisegundos para recuperar datos del Autodarts Boardmanager.",
+    "triple_flag": "Campo mínimo para el triple disparador",
+    "triple_flag2": "Campo máximo para el triple disparador",
+    "triple_flag2_help": "Campo de puntuación máxima para el triple disparador. Los dardos con una puntuación superior a este valor no activarán el punto de datos Triple-Trigger.",
+    "triple_flag_help": "Campo de puntuación mínima para el triple disparador. Los dardos con una puntuación inferior a este valor no activarán el punto de datos Triple-Trigger."
 }

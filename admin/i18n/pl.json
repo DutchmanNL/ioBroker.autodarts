@@ -1,8 +1,13 @@
 {
-    "host_ip": "Autodarts (Boardmanager) Host / IP",
+    "host_ip": "Autodarts (Boardmanager) Host/IP",
+    "host_ip_help": "Adres IP lokalnego zarządcy Autodarts.",
     "host_port": "Port Autodarts (Boardmanager).",
-    "intro_txt": "Konfiguracja adaptera Autodarts.<br>Wprowadź host i port z Boardmanager oraz interwał odpytywania.",
-    "outro_txt": "Zespół inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
+    "host_port_help": "Numer portu lokalnego zarządcy Autodarts.",
+    "intro_txt": "Konfiguracja adaptera Autodarts.",
     "polling": "Interwał odpytywania (ms)",
-    "triple_flag": "Minimalny wynik dla Potrójnej Flagi"
+    "polling_help": "Interwał odpytywania w milisekundach w celu pobrania danych z menedżera Autodarts Boardmanager.",
+    "triple_flag": "Minimalne pole dla potrójnego wyzwalacza",
+    "triple_flag2": "Maksymalne pole dla potrójnego wyzwalacza",
+    "triple_flag2_help": "Pole maksymalnego wyniku dla potrójnego wyzwalacza. Rzutki z wynikiem powyżej tej wartości nie uruchomią punktu danych Triple-Trigger.",
+    "triple_flag_help": "Pole minimalnego wyniku dla potrójnego wyzwalacza. Rzutki z wynikiem poniżej tej wartości nie uruchomią punktu danych Triple-Trigger."
 }

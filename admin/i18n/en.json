@@ -1,8 +1,13 @@
 {
-    "intro_txt": "Autodarts adapter configuration.<br>Please enter host and port from Boardmanager as well as the polling interval.",
-    "outro_txt": "Team inventwo •  <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
-    "host_ip": "Autodarts (Boardmanager) Host / IP",
+    "host_ip": "Autodarts (Boardmanager) Host/IP",
+    "host_ip_help": "IP address of the local Autodarts Boardmanager.",
     "host_port": "Autodarts (Boardmanager) Port",
+    "host_port_help": "Port number of the local Autodarts Boardmanager.",
+    "intro_txt": "Autodarts adapter configuration.",
     "polling": "Polling interval (ms)",
-    "triple_flag": "Minimum score for Triple Flag"
+    "polling_help": "Polling interval in milliseconds to retrieve data from the Autodarts Boardmanager.",
+    "triple_flag": "Minimum field for the triple trigger",
+    "triple_flag2": "Maximum field for the triple trigger",
+    "triple_flag2_help": "Maximum score field for the triple trigger. Darts with a score above this value will not trigger the Triple-Trigger datapoint.",
+    "triple_flag_help": "Minimum score field for the triple trigger. Darts with a score below this value will not trigger the Triple-Trigger datapoint."
 }

@@ -1,8 +1,13 @@
 {
     "host_ip": "Autodarts (Boardmanager) Хост/IP",
+    "host_ip_help": "IP-адрес местного Autodarts Boardmanager.",
     "host_port": "Порт Autodarts (Boardmanager)",
-    "intro_txt": "Конфигурация адаптера Autodarts.<br>Укажите хост и порт из Boardmanager, а также интервал опроса.",
-    "outro_txt": "Команда inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
+    "host_port_help": "Номер порта местного Autodarts Boardmanager.",
+    "intro_txt": "Конфигурация адаптера Autodarts.",
     "polling": "Интервал опроса (мс)",
-    "triple_flag": "Минимальный балл для тройного флага"
+    "polling_help": "Интервал опроса в миллисекундах для получения данных из Autodarts Boardmanager.",
+    "triple_flag": "Минимальное поле для тройного триггера",
+    "triple_flag2": "Максимальное поле для тройного триггера",
+    "triple_flag2_help": "Поле максимального результата для тройного триггера. Дартс с результатом выше этого значения не будет активировать точку данных тройного триггера.",
+    "triple_flag_help": "Поле минимального балла для тройного триггера. Дартс со счетом ниже этого значения не будет активировать точку данных тройного триггера."
 }

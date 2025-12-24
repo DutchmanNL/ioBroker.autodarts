@@ -1,8 +1,13 @@
 {
-    "host_ip": "Autodarts (Boardmanager) Host / IP",
+    "host_ip": "Autodarts (Boardmanager) Host/IP",
+    "host_ip_help": "IP-Adresse des lokalen Autodarts Boardmanagers.",
     "host_port": "Autodarts (Boardmanager) Port",
-    "intro_txt": "Autodarts-Adapterkonfiguration.<br>Bitte gebe IP und Port vom Boardmanager sowie den Abfrageintervall ein.",
-    "outro_txt": "Team inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
+    "host_port_help": "Portnummer des lokalen Autodarts Boardmanagers.",
+    "intro_txt": "Konfiguration des Autodarts-Adapters.",
     "polling": "Abfrageintervall (ms)",
-    "triple_flag": "Mindestpunktzahl für den Triple-Datenpunkt"
+    "polling_help": "Abfrageintervall in Millisekunden zum Abrufen von Daten vom Autodarts Boardmanager.",
+    "triple_flag": "Minimales Feld für den Triple-Trigger",
+    "triple_flag2": "Maximales Feld für den Triple-Trigger",
+    "triple_flag2_help": "Feld „Maximale Punktzahl“ für den Triple-Trigger. Darts mit einer Punktzahl über diesem Wert lösen den Triple-Trigger-Datenpunkt nicht aus.",
+    "triple_flag_help": "Feld „Mindestpunktzahl“ für den Triple-Trigger. Darts mit einer Punktzahl unter diesem Wert lösen den Triple-Trigger-Datenpunkt nicht aus."
 }

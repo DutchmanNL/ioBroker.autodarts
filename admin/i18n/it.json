@@ -1,8 +1,13 @@
 {
     "host_ip": "Host/IP Autodarts (Boardmanager).",
+    "host_ip_help": "Indirizzo IP del Boardmanager Autodarts locale.",
     "host_port": "Porta Autodarts (Boardmanager).",
-    "intro_txt": "Configurazione dell'adattatore Autodarts.<br>Inserisci host e porta da Boardmanager nonché l'intervallo di polling.",
-    "outro_txt": "Team inventtwo • <a href=\"https://github.com/inventtwo\">https://github.com/inventtwo</a>",
+    "host_port_help": "Numero di porta del Boardmanager Autodarts locale.",
+    "intro_txt": "Configurazione dell'adattatore Autodarts.",
     "polling": "Intervallo di polling (ms)",
-    "triple_flag": "Punteggio minimo per Triple Flag"
+    "polling_help": "Intervallo di polling in millisecondi per recuperare i dati da Autodarts Boardmanager.",
+    "triple_flag": "Campo minimo per il triplo trigger",
+    "triple_flag2": "Campo massimo per il triplo trigger",
+    "triple_flag2_help": "Campo del punteggio massimo per il triplo trigger. Le freccette con un punteggio superiore a questo valore non attiveranno il punto dati Triple-Trigger.",
+    "triple_flag_help": "Campo del punteggio minimo per il triplo trigger. Le freccette con un punteggio inferiore a questo valore non attiveranno il punto dati Triple-Trigger."
 }

@@ -24,6 +24,7 @@ It also provides:
 - `visit.score`: Total score of the last complete visit (3 darts).
 - `throw.current`: Numeric score of the last thrown dart.
 - `throw.isTriple`: Boolean flag that only turns true for triple hits above a configurable score threshold.
+- `throw.isBullseye`: Boolean flag that only turns true for bullseye hits.
 - `system.boardVersion`: Reported Board Manager version.
 - `system.cam0/1/2`: JSON with camera settings (width, height, fps).
 
@@ -55,6 +56,12 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- Added datapoint for bulls-hit
+- Added maximun triple-hit flag score
+- Update config
+- Warning in log cleared
+
 ### 0.1.0 (2025-12-23)
 - Added datapoints for visit score, current dart score, triple-hit flag with configurable minimum score, and camera configuration (cam0–cam2).
 - Cleaned up adapter logic and internal polling/timing.

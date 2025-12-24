@@ -1,8 +1,13 @@
 {
-    "host_ip": "Autodarts (Boardmanager) Host / IP",
+    "host_ip": "Autodarts (Bestuursmanager) Host/IP",
+    "host_ip_help": "IP-adres van de lokale Autodarts Boardmanager.",
     "host_port": "Autodarts (Bestuursmanager) Port",
-    "intro_txt": "Autodarts-adapterconfiguratie.<br>Voer de host en poort van Boardmanager in, evenals het polling-interval.",
-    "outro_txt": "Team inventwo • <a href=\"https://github.com/inventwo\">https://github.com/inventwo</a>",
+    "host_port_help": "Poortnummer van de lokale Autodarts Boardmanager.",
+    "intro_txt": "Autodarts-adapterconfiguratie.",
     "polling": "Polling-interval (ms)",
-    "triple_flag": "Minimumscore voor Triple Flag"
+    "polling_help": "Polling-interval in milliseconden om gegevens uit de Autodarts Boardmanager op te halen.",
+    "triple_flag": "Minimumveld voor de drievoudige trigger",
+    "triple_flag2": "Maximaal veld voor de drievoudige trigger",
+    "triple_flag2_help": "Maximaal scoreveld voor de drievoudige trigger. Darten met een score boven deze waarde activeren het Triple-Trigger-datapunt niet.",
+    "triple_flag_help": "Minimumscoreveld voor de drievoudige trigger. Darten met een score onder deze waarde activeren het Triple-Trigger-datapunt niet."
 }

@@ -11,6 +11,7 @@ class Autodarts extends utils.Adapter {
 		});
 
 		this.on("ready", this.onReady.bind(this));
+		this.on("stateChange", this.onStateChange.bind(this));
 		this.on("unload", this.onUnload.bind(this));
 
 		this.pollTimer = null;
@@ -18,6 +19,9 @@ class Autodarts extends utils.Adapter {
 		this.lastSignature = ""; // Verhindert doppelte Verarbeitung gleicher Würfe
 		this.offline = false;
 		this.versionTimer = null; // Timer für Versions- und Config-Abfrage
+
+		this.tripleMinScoreRuntime = null; // Laufzeitwert für Triple-Minschwelle
+		this.tripleMaxScoreRuntime = null; // Laufzeitwert für Triple-Maxschwelle
 	}
 
 	async onReady() {
@@ -30,6 +34,9 @@ class Autodarts extends utils.Adapter {
 		// eslint-disable-next-line jsdoc/check-tag-names
 		/** @ts-expect-error tripleMinScore is defined in io-package.json but not in AdapterConfig */
 		this.config.tripleMinScore ??= 1; // Mindestpunktzahl für Triple-Flag
+		// eslint-disable-next-line jsdoc/check-tag-names
+		/** @ts-expect-error tripleMaxScore is defined in io-package.json but not in AdapterConfig */
+		this.config.tripleMaxScore ??= 20; // Maximalpunktzahl für Triple-Flag
 
 		// Visit-Struktur anlegen
 		await this.setObjectNotExistsAsync("visit", {
@@ -79,7 +86,7 @@ class Autodarts extends utils.Adapter {
 			common: {
 				name: {
 					en: "Current dart score",
-					de: "Punkte aktueller Pfeil",
+					de: "Punkte aktueller Dart",
 				},
 				type: "number",
 				role: "value",
@@ -87,7 +94,7 @@ class Autodarts extends utils.Adapter {
 				write: false,
 				desc: {
 					en: "Score of the last dart",
-					de: "Punktzahl des letzten Pfeils",
+					de: "Punktzahl des letzten Dart",
 				},
 			},
 			native: {},
@@ -105,8 +112,27 @@ class Autodarts extends utils.Adapter {
 				read: true,
 				write: false,
 				desc: {
-					en: "true if the last dart hit a triple segment (and passes score threshold)",
-					de: "true, wenn der letzte Pfeil ein Triple-Segment getroffen hat (und die Punktschwelle erfüllt)",
+					en: "true if the dart hit a triple segment (and passes score range)",
+					de: "true, wenn ein Dart ein Triple-Segment getroffen hat (und innerhalb der Punkterange liegt)",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("throw.isBulleye", {
+			type: "state",
+			common: {
+				name: {
+					en: "Bulleye hit",
+					de: "Bulleye getroffen",
+				},
+				type: "boolean",
+				role: "indicator",
+				read: true,
+				write: false,
+				desc: {
+					en: "true if the dart hit the bull or bullseye",
+					de: "true, wenn ein Dart Bull oder Bulleye getroffen hat",
 				},
 			},
 			native: {},
@@ -221,6 +247,77 @@ class Autodarts extends utils.Adapter {
 			native: {},
 		});
 
+		// Config-Channel und States für tripleMinScore / tripleMaxScore (zur Laufzeit änderbar)
+		await this.setObjectNotExistsAsync("config", {
+			type: "channel",
+			common: {
+				name: {
+					en: "Runtime configuration",
+					de: "Laufzeitkonfiguration",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("config.tripleMinScore", {
+			type: "state",
+			common: {
+				name: {
+					en: "Triple minimum score",
+					de: "Triple Mindestpunktzahl",
+				},
+				type: "number",
+				role: "value",
+				read: true,
+				write: true,
+				desc: {
+					en: "Minimum score for triple flag (overrides adapter config while running)",
+					de: "Mindestpunktzahl für den Triple-Trigger (überschreibt Adapter-Config zur Laufzeit)",
+				},
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync("config.tripleMaxScore", {
+			type: "state",
+			common: {
+				name: {
+					en: "Triple maximum score",
+					de: "Triple Maximalpunktzahl",
+				},
+				type: "number",
+				role: "value",
+				read: true,
+				write: true,
+				desc: {
+					en: "Maximum score for triple flag (overrides adapter config while running)",
+					de: "Maximalpunktzahl für den Triple-Trigger (überschreibt Adapter-Config zur Laufzeit)",
+				},
+			},
+			native: {},
+		});
+
+		// Laufzeitwerte initial aus Adapter-Config setzen
+		// eslint-disable-next-line jsdoc/check-tag-names
+		/** @ts-expect-error tripleMinScore is defined in io-package.json but not in AdapterConfig */
+		this.tripleMinScoreRuntime = Number(this.config.tripleMinScore) || 1;
+		// eslint-disable-next-line jsdoc/check-tag-names
+		/** @ts-expect-error tripleMaxScore is defined in io-package.json but not in AdapterConfig */
+		this.tripleMaxScoreRuntime = Number(this.config.tripleMaxScore) || 20;
+
+		await this.setStateAsync("config.tripleMinScore", {
+			val: this.tripleMinScoreRuntime,
+			ack: true,
+		});
+		await this.setStateAsync("config.tripleMaxScore", {
+			val: this.tripleMaxScoreRuntime,
+			ack: true,
+		});
+
+		// Auf Änderungen am Config-State hören
+		this.subscribeStates("config.tripleMinScore");
+		this.subscribeStates("config.tripleMaxScore");
+
 		// Zustand zurücksetzen
 		this.lastThrowsCount = 0;
 		this.lastSignature = "";
@@ -252,6 +349,51 @@ class Autodarts extends utils.Adapter {
 			return 0;
 		}
 		return (dart.segment.number || 0) * (dart.segment.multiplier || 0);
+	}
+
+	/**
+	 * Reaktion auf State-Änderungen (z. B. config.tripleMinScore / config.tripleMaxScore)
+	 *
+	 * @param {string} id  Full state id
+	 * @param {ioBroker.State | null | undefined} state  New state value (ack=false on user write)
+	 */
+	onStateChange(id, state) {
+		if (!state) {
+			return;
+		}
+
+		// Nur auf Schreibaktionen reagieren (ack === false)
+		if (state.ack) {
+			return;
+		}
+
+		const idShort = id.replace(`${this.namespace}.`, "");
+
+		if (idShort === "config.tripleMinScore") {
+			const val = Number(state.val);
+			if (!Number.isFinite(val) || val <= 0) {
+				this.log.warn(`Invalid tripleMinScore value: ${state.val}`);
+				return;
+			}
+
+			this.tripleMinScoreRuntime = val;
+			this.log.info(`Runtime tripleMinScore updated to ${val}`);
+
+			// Wert mit ack bestätigen
+			this.setState("config.tripleMinScore", { val, ack: true });
+		} else if (idShort === "config.tripleMaxScore") {
+			const val = Number(state.val);
+			if (!Number.isFinite(val) || val <= 0) {
+				this.log.warn(`Invalid tripleMaxScore value: ${state.val}`);
+				return;
+			}
+
+			this.tripleMaxScoreRuntime = val;
+			this.log.info(`Runtime tripleMaxScore updated to ${val}`);
+
+			// Wert mit ack bestätigen
+			this.setState("config.tripleMaxScore", { val, ack: true });
+		}
 	}
 
 	/**
@@ -302,16 +444,46 @@ class Autodarts extends utils.Adapter {
 					const lastDart = currentThrows[currentThrows.length - 1];
 					const score = this.calcScore(lastDart);
 
-					// Konfigurierter Mindestwert für Triple-Flag
-					// eslint-disable-next-line jsdoc/check-tag-names
-					/** @ts-expect-error tripleMinScore is defined in io-package.json but not in AdapterConfig */
-					const minScore = Number(this.config.tripleMinScore) || 0;
+					// Konfigurierte Score-Range für Triple-Flag:
+					// zuerst Laufzeitwerte, Fallback auf Adapter-Config
+					let minScore = this.tripleMinScoreRuntime;
+					let maxScore = this.tripleMaxScoreRuntime;
 
-					// Triple nur, wenn multiplier === 3 UND score >= minScore
-					const isTriple = !!lastDart?.segment && lastDart.segment.multiplier === 3 && score >= minScore;
+					if (!Number.isFinite(minScore)) {
+						// eslint-disable-next-line jsdoc/check-tag-names
+						/** @ts-expect-error tripleMinScore is defined in io-package.json but not in AdapterConfig */
+						minScore = Number(this.config.tripleMinScore) || 1;
+					}
+					if (!Number.isFinite(maxScore)) {
+						// eslint-disable-next-line jsdoc/check-tag-names
+						/** @ts-expect-error tripleMaxScore is defined in io-package.json but not in AdapterConfig */
+						maxScore = Number(this.config.tripleMaxScore) || 20;
+					}
+
+					if (minScore > maxScore) {
+						const tmp = minScore;
+						minScore = maxScore;
+						maxScore = tmp;
+					}
+
+					// Triple nur, wenn:
+					// - multiplier === 3
+					// - score >= minScore
+					// - score <= maxScore
+					const isTriple =
+						!!lastDart?.segment &&
+						lastDart.segment.multiplier === 3 &&
+						score >= minScore &&
+						score <= maxScore;
+
+					// Bulleye-Erkennung:
+					// je nach Autodarts-API typischerweise über segment.name ("BULL", "DBULL", "SBULL")
+					const segName = (lastDart?.segment?.name || "").toUpperCase();
+					const isBulleye = segName.includes("BULL") || lastDart?.segment?.number === 25; // Fallback
 
 					this.setState("throw.current", { val: score, ack: true });
 					this.setState("throw.isTriple", { val: isTriple, ack: true });
+					this.setState("throw.isBulleye", { val: isBulleye, ack: true });
 
 					// Nur schreiben, wenn:
 					// - genau 3 Darts geworfen wurden
@@ -344,6 +516,10 @@ class Autodarts extends utils.Adapter {
 
 		req.on("timeout", () => {
 			req.destroy();
+			if (!this.offline) {
+				this.log.warn("Autodarts not reachable");
+				this.offline = true;
+			}
 			this.setState("online", false, true); // Server offline bei Timeout
 		});
 
@@ -376,12 +552,13 @@ class Autodarts extends utils.Adapter {
 		});
 
 		req.on("error", () => {
-			this.log.warn("Version-API nicht erreichbar");
+			// Keine Log-Warnung, nur State leeren
 			this.setState("system.boardVersion", { val: "", ack: true });
 		});
 
 		req.on("timeout", () => {
 			req.destroy();
+			// Keine Log-Warnung, nur State leeren
 			this.setState("system.boardVersion", { val: "", ack: true });
 		});
 
@@ -426,12 +603,12 @@ class Autodarts extends utils.Adapter {
 		});
 
 		req.on("error", () => {
-			this.log.warn("Config-API nicht erreichbar");
+			// Keine Log-Warnung mehr
 		});
 
 		req.on("timeout", () => {
 			req.destroy();
-			this.log.warn("Config-API Timeout");
+			// Keine Log-Warnung mehr
 		});
 
 		req.end();
