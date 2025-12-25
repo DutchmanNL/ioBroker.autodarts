@@ -490,6 +490,7 @@ class Autodarts extends utils.Adapter {
 					// letzten Dart in States schreiben
 					const lastDart = currentThrows[currentThrows.length - 1];
 					const score = this.calcScore(lastDart);
+					const segment = lastDart?.segment?.number || 0;
 
 					// Konfigurierte Score-Range für Triple-Flag:
 					// zuerst Laufzeitwerte, Fallback auf Adapter-Config
@@ -520,8 +521,8 @@ class Autodarts extends utils.Adapter {
 					const isTriple =
 						!!lastDart?.segment &&
 						lastDart.segment.multiplier === 3 &&
-						score >= minScore &&
-						score <= maxScore;
+						segment >= minScore &&
+						segment <= maxScore;
 
 					// Bulleye-Erkennung:
 					// je nach Autodarts-API typischerweise über segment.name ("BULL", "DBULL", "SBULL")
