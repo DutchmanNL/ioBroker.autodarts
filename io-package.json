@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodarts",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "Added datapoint for bulls-hit\nAdded maximun triple-hit flag score\nUpdate config\nWarning in log cleared",
+        "de": "Datenpunkt für Bullen-Hit hinzugefügt\nZusätzlich maximun triple-hit flag score\nUpdate config\nWarnung im Protokoll gelöscht",
+        "ru": "Добавлена точка данных для быков-хит\nДобавлена тройная оценка Maximun\nОбновление конфигурации\nПредупреждение в журнале очищено",
+        "pt": "Ponto de dados adicionado para bulls-hit\nPontuação da bandeira máxima de três hit\nActualizar a configuração\nAviso no log apagado",
+        "nl": "Toegevoegd datapoint voor bulls-hit\nToegevoegd maximiun triple-hit vlag score\nConfiguratie bijwerken\nWaarschuwing in log gewist",
+        "fr": "Ajout du point de données pour bulls-hit\nAjout de maximun triple-hit drapeau score\nMettre à jour la configuration\nAvertissement dans le journal effacé",
+        "it": "Datapoint aggiunto per bulls-hit\nAggiunto maximun triple-hit flag punteggio\nAggiornamento configurazione\nAvviso in log sgomberato",
+        "es": "Punto de datos añadido para los toros\nAgregado maximun triple marca de bandera\nActualizar configuración\nAdvertencia en el registro despejado",
+        "pl": "Dodano punkt danych dla byków\nDodano wynik flagi maximun triplehit\nAktualizuj konfigurację\nOstrzeżenie w dzienniku wyczyszczonym",
+        "uk": "Додано точку даних для биків-хіт\nДодано максимальний потрійний-hit прапорець бал\nНалаштування оновлення\nПопередження в журналі",
+        "zh-cn": "给 bull- hit 添加数据点\n增加最大值的三重旗分\n更新配置\n清除日志中的警告"
+      },
       "0.1.0": {
         "en": "Added datapoints for visit score, current dart score, triple-hit flag with configurable minimum score, and camera configuration (cam0–cam2).\nCleaned up adapter logic and internal polling/timing.\nUpdated translations.",
         "de": "Weitere Datenpunkte für Besuchscore, aktuelle Dart-Score, Tripel-hit-Flag mit konfigurierbaren minimalen Punktzahl und Kamerakonfiguration (cam0–cam2).\nAufgereinigte Adapterlogik und interne Abfrage/timing.\nAktualisierte Übersetzungen.",
@@ -69,19 +82,6 @@
         "zh-cn": "固定"
       },
       "0.0.8": {
-        "en": "fix - Adapter Checker",
-        "de": "fix - Adapter Checker",
-        "ru": "обсуждение Adapter Checker",
-        "pt": "correção - Adapter Checker",
-        "nl": "fix - Adapterchecker",
-        "fr": "correction - Vérificateur d'adaptateur",
-        "it": "correzione - Adattatore Checker",
-        "es": "fijado - Adaptador Checker",
-        "pl": "fix - Kontrola adaptera",
-        "uk": "виправити - Перевірювач адаптера",
-        "zh-cn": "修补 - 适配器检查器"
-      },
-      "0.0.7": {
         "en": "fix - Adapter Checker",
         "de": "fix - Adapter Checker",
         "ru": "обсуждение Adapter Checker",

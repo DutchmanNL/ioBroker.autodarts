@@ -56,7 +56,7 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.2.0 (2025-12-25)
 - Added datapoint for bulls-hit
 - Added maximun triple-hit flag score
 - Update config
