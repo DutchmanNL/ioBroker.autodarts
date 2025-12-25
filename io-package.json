@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodarts",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "news": {
+      "0.2.1": {
+        "en": "Reset for triple and bullseye trigger added",
+        "de": "Zurücksetzen für Triple und Bullseye Trigger hinzugefügt",
+        "ru": "Сброс тройного и бычьего триггера добавлен",
+        "pt": "Reiniciar para gatilho triplo e bullseye adicionado",
+        "nl": "Reset voor drievoudige en bullseye trigger toegevoegd",
+        "fr": "Réinitialiser pour triple et bullseye déclencheur ajouté",
+        "it": "Reset per trigger triple e bullseye aggiunto",
+        "es": "Reiniciar para triple y disparador de toros",
+        "pl": "Reset dla triple i bulseye wyzwalacz dodany",
+        "uk": "Зміщено переадресацію для тридцятого і буклесу",
+        "zh-cn": "重置三重和牛眼触发器"
+      },
       "0.2.0": {
         "en": "Added datapoint for bulls-hit\nAdded maximun triple-hit flag score\nUpdate config\nWarning in log cleared",
         "de": "Datenpunkt für Bullen-Hit hinzugefügt\nZusätzlich maximun triple-hit flag score\nUpdate config\nWarnung im Protokoll gelöscht",
@@ -80,19 +93,6 @@
         "pl": "fix",
         "uk": "фіксація",
         "zh-cn": "固定"
-      },
-      "0.0.8": {
-        "en": "fix - Adapter Checker",
-        "de": "fix - Adapter Checker",
-        "ru": "обсуждение Adapter Checker",
-        "pt": "correção - Adapter Checker",
-        "nl": "fix - Adapterchecker",
-        "fr": "correction - Vérificateur d'adaptateur",
-        "it": "correzione - Adattatore Checker",
-        "es": "fijado - Adaptador Checker",
-        "pl": "fix - Kontrola adaptera",
-        "uk": "виправити - Перевірювач адаптера",
-        "zh-cn": "修补 - 适配器检查器"
       }
     },
     "titleLang": {
