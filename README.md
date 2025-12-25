@@ -56,6 +56,9 @@ In the adapter settings, enter:
 <!--
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- bugfix
+
 ### 0.2.1 (2025-12-25)
 - Reset for triple and bullseye trigger added
 
