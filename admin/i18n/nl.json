@@ -6,6 +6,8 @@
     "intro_txt": "Autodarts-adapterconfiguratie.",
     "polling": "Polling-interval (ms)",
     "polling_help": "Polling-interval in milliseconden om gegevens uit de Autodarts Boardmanager op te halen.",
+    "reset": "Trigger-reset (ms)",
+    "reset_help": "Reset de drievoudige en bullseye-trigger na x ms (0 = geen reset).",
     "triple_flag": "Minimumveld voor de drievoudige trigger",
     "triple_flag2": "Maximaal veld voor de drievoudige trigger",
     "triple_flag2_help": "Maximaal scoreveld voor de drievoudige trigger. Darten met een score boven deze waarde activeren het Triple-Trigger-datapunt niet.",

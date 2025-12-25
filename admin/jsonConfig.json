@@ -126,10 +126,27 @@
         "marginBottom": "10px"
       }
     },
+    "triggerResetMs": {
+      "type": "number",
+      "label": "reset",
+      "help": "reset_help",
+      "default": 0,
+      "newLine": true,
+			"sm": 12,
+			"xs": 12,
+			"md": 12,
+			"lg": 12,
+			"xl": 12,
+      "style": {
+        "marginTop": "10px",
+        "marginBottom": "10px"
+      }
+    },
     "interval": {
       "type": "number",
       "label": "polling",
       "help": "polling_help",
+      "default": 1000,
       "newLine": true,
 			"sm": 12,
 			"xs": 12,

@@ -6,6 +6,8 @@
     "intro_txt": "Configuration de l'adaptateur Autodarts.",
     "polling": "Intervalle d'interrogation (ms)",
     "polling_help": "Intervalle d'interrogation en millisecondes pour récupérer les données d'Autodarts Boardmanager.",
+    "reset": "Déclencheur-réinitialisation (ms)",
+    "reset_help": "Réinitialisez le déclencheur triple et bullseye après x ms (0 = pas de réinitialisation).",
     "triple_flag": "Champ minimum pour le triple déclencheur",
     "triple_flag2": "Champ maximum pour le triple déclencheur",
     "triple_flag2_help": "Champ de score maximum pour le triple déclencheur. Les fléchettes avec un score supérieur à cette valeur ne déclencheront pas le point de données Triple-Trigger.",
