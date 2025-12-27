@@ -66,6 +66,8 @@ In the adapter settings, enter:
 - (DrozmotiX) **ENHANCED**: Improved connection state logging - now logs when connection is restored after being offline
 - (DrozmotiX) **ENHANCED**: Standardized async/await usage across all state change handlers for consistency
 - (DrozmotiX) **FIXED**: Removed unused error variable in fetchVersion method
+- (DrozmotiX) **FIXED**: Added proper error type checking in fetchConfig to prevent runtime errors
+- (DrozmotiX) **TESTING**: Added comprehensive unit tests for httpHelper module covering success, timeout, and error scenarios
 
 ### 0.3.1 (2025-12-27)
 - Changed: Object creation now uses extendObjectAsync with proper roles and types instead of setObjectNotExistsAsync.

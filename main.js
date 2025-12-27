@@ -445,7 +445,12 @@ class Autodarts extends utils.Adapter {
 			await this.setStateAsync("system.cam2", { val: json, ack: true });
 		} catch (error) {
 			// Bei Fehler keine Log-Warnung
-			if (error.message.includes("JSON")) {
+			if (
+				error &&
+				typeof error === "object" &&
+				typeof error.message === "string" &&
+				error.message.includes("JSON")
+			) {
 				this.log.debug(`Could not parse camera config: ${error.message}`);
 			}
 		}
